@@ -4,18 +4,12 @@ const gallery = document.querySelector('.gallery__list');
 const bigPicture = document.querySelector('.gallery__large-img');
 const bigPictureLink = bigPicture.getAttribute('src');
 
-gallery.addEventListener('click', () => {
-  const picture = event.target.closest('.gallery__img');
+gallery.addEventListener('click', (clickEvent) => {
+  const picture = clickEvent.target.closest('.gallery__img');
   const pictureLink = picture.getAttribute('src');
 
-  if (!picture) {
-    return null;
-  } else {
-    bigPicture.gallery.replaceChild(picture, bigPicture);
+  const temp = bigPictureLink;
 
-    const temp = bigPictureLink;
-
-    bigPicture.setAttribute('src', pictureLink);
-    picture.setAttribute('src', temp);
-  }
+  bigPicture.setAttribute('src', pictureLink);
+  picture.setAttribute('src', temp);
 });
