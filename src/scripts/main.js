@@ -2,14 +2,15 @@
 
 const gallery = document.querySelector('.gallery__list');
 const bigPicture = document.querySelector('.gallery__large-img');
-const bigPictureLink = bigPicture.getAttribute('src');
 
 gallery.addEventListener('click', (clickEvent) => {
   const picture = clickEvent.target.closest('.gallery__img');
-  const pictureLink = picture.getAttribute('src');
 
-  const temp = bigPictureLink;
+  if (!picture) {
+    return null;
+  } else {
+    const pictureLink = picture.getAttribute('src');
 
-  bigPicture.setAttribute('src', pictureLink);
-  picture.setAttribute('src', temp);
+    bigPicture.setAttribute('src', pictureLink);
+  }
 });
