@@ -1,18 +1,13 @@
 'use strict';
 
-const gallery = document.querySelector('.gallery__list');
-const bigPicture = document.querySelector('.gallery__large-img');
+const list = document.querySelector('.gallery__list');
 
-gallery.addEventListener('click', (clickEvent) => {
-  clickEvent.preventDefault();
+list.addEventListener('click', (e) => {
+  e.preventDefault();
 
-  const picture = clickEvent.target.closest('.gallery__img');
+  const listItem = e.target.closest('.list-item');
+  const link = listItem.querySelector('a');
+  const galery = document.querySelector('#largeImg');
 
-  if (!picture) {
-    return null;
-  } else {
-    const pictureLink = picture.getAttribute('src');
-
-    bigPicture.setAttribute('src', pictureLink);
-  }
+  galery.src = link.href;
 });
